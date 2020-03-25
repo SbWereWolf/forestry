@@ -44,7 +44,6 @@ return [
             'title' => 'Наименование породы древесины',
             'timber_harvesting_age' => 'Возраст рубки',
             'main_harvesting_age' => 'Возраст главной рубки',
-            'max_timber_class' => 'Максимальный класс древесины',
 
         ],
     ],

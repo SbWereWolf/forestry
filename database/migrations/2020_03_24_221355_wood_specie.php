@@ -19,7 +19,6 @@ class WoodSpecie extends Migration
             $table->unsignedInteger('calculation_period');
             $table->unsignedInteger('timber_harvesting_age');
             $table->unsignedInteger('main_harvesting_age');
-            $table->unsignedInteger('max_timber_class');
         });
     }
 

@@ -67,8 +67,6 @@
                                         :column="'timber_harvesting_age'">{{ trans('admin.wood-specie.columns.timber_harvesting_age') }}</th>
                                     <th is='sortable'
                                         :column="'main_harvesting_age'">{{ trans('admin.wood-specie.columns.main_harvesting_age') }}</th>
-                                    <th is='sortable'
-                                        :column="'max_timber_class'">{{ trans('admin.wood-specie.columns.max_timber_class') }}</th>
 
                                     <th></th>
                                 </tr>
@@ -110,7 +108,6 @@
                                     <td>@{{ item.calculation_period }}</td>
                                     <td>@{{ item.timber_harvesting_age }}</td>
                                     <td>@{{ item.main_harvesting_age }}</td>
-                                    <td>@{{ item.max_timber_class }}</td>
 
                                     <td>
                                         <div class="row no-gutters">

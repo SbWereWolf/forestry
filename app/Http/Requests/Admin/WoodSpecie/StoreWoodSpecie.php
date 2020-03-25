@@ -28,10 +28,9 @@ class StoreWoodSpecie extends FormRequest
         return [
             'calculation_period' => ['required', 'integer'],
             'main_harvesting_age' => ['required', 'integer'],
-            'max_timber_class' => ['required', 'integer'],
             'timber_harvesting_age' => ['required', 'integer'],
             'title' => ['required', Rule::unique('wood_specie', 'title'), 'string'],
-            
+
         ];
     }
 

@@ -25,7 +25,7 @@ class IndexWoodSpecie extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:calculation_period,id,main_harvesting_age,max_timber_class,timber_harvesting_age,title|nullable',
+            'orderBy' => 'in:calculation_period,id,main_harvesting_age,timber_harvesting_age,title|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

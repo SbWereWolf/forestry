@@ -37,7 +37,7 @@ class WoodSpecieController extends Controller
             $request,
 
             // set columns to query
-            ['calculation_period', 'id', 'main_harvesting_age', 'max_timber_class', 'timber_harvesting_age', 'title'],
+            ['calculation_period', 'id', 'main_harvesting_age', 'timber_harvesting_age', 'title'],
 
             // set columns to searchIn
             ['id', 'title']

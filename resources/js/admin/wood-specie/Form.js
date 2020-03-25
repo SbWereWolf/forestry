@@ -7,10 +7,9 @@ Vue.component('wood-specie-form', {
             form: {
                 calculation_period:  '' ,
                 main_harvesting_age:  '' ,
-                max_timber_class:  '' ,
                 timber_harvesting_age:  '' ,
                 title:  '' ,
-                
+
             }
         }
     }

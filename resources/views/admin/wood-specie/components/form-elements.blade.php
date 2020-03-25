@@ -44,22 +44,6 @@
 </div>
 
 <div class="form-group row align-items-center"
-     :class="{'has-danger': errors.has('max_timber_class'), 'has-success': fields.max_timber_class && fields.max_timber_class.valid }">
-    <label for="max_timber_class" class="col-form-label text-md-right"
-           :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.wood-specie.columns.max_timber_class') }}</label>
-    <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.max_timber_class" v-validate="'required|integer'" @input="validate($event)"
-               class="form-control"
-               :class="{'form-control-danger': errors.has('max_timber_class'), 'form-control-success': fields.max_timber_class && fields.max_timber_class.valid}"
-               id="max_timber_class" name="max_timber_class"
-               placeholder="{{ trans('admin.wood-specie.columns.max_timber_class') }}">
-        <div v-if="errors.has('max_timber_class')" class="form-control-feedback form-text" v-cloak>@{{
-            errors.first('max_timber_class') }}
-        </div>
-    </div>
-</div>
-
-<div class="form-group row align-items-center"
      :class="{'has-danger': errors.has('main_harvesting_age'), 'has-success': fields.main_harvesting_age && fields.main_harvesting_age.valid }">
     <label for="main_harvesting_age" class="col-form-label text-md-right"
            :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.wood-specie.columns.main_harvesting_age') }}</label>

@@ -89,7 +89,6 @@ return [
             'calculation_period' => 'Calculation period',
             'timber_harvesting_age' => 'Timber harvesting age',
             'main_harvesting_age' => 'Main harvesting age',
-            'max_timber_class' => 'Max timber class',
 
         ],
     ],

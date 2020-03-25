@@ -28,10 +28,9 @@ class UpdateWoodSpecie extends FormRequest
         return [
             'calculation_period' => ['sometimes', 'integer'],
             'main_harvesting_age' => ['sometimes', 'integer'],
-            'max_timber_class' => ['sometimes', 'integer'],
             'timber_harvesting_age' => ['sometimes', 'integer'],
             'title' => ['sometimes', Rule::unique('wood_specie', 'title')->ignore($this->woodSpecie->getKey(), $this->woodSpecie->getKeyName()), 'string'],
-            
+
         ];
     }
 

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -53,6 +55,39 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'WoodSpecieController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{woodSpecie}',                                'WoodSpecieController@update')->name('update');
             Route::delete('/{woodSpecie}',                              'WoodSpecieController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
+        Route::prefix('bonitets')->name('bonitets/')->group(static function() {
+            Route::get('/', 'BonitetController@index')->name('index');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
+        Route::prefix('timber-classes')->name('timber-classes/')->group(static function() {
+            Route::get('/', 'TimberClassController@index')->name('index');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
+        Route::prefix('forest-resources')->name('forest-resources/')->group(static function() {
+            Route::get('/',                                             'ForestResourcesController@index')->name('index');
+            Route::get('/create',                                       'ForestResourcesController@create')->name('create');
+            Route::post('/',                                            'ForestResourcesController@store')->name('store');
+            Route::get('/{forestResource}/edit',                        'ForestResourcesController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'ForestResourcesController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{forestResource}',                            'ForestResourcesController@update')->name('update');
+            Route::delete('/{forestResource}',                          'ForestResourcesController@destroy')->name('destroy');
         });
     });
 });

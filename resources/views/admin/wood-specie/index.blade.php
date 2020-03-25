@@ -58,7 +58,6 @@
                                         </label>
                                     </th>
 
-                                    <th is='sortable' :column="'id'">{{ trans('admin.wood-specie.columns.id') }}</th>
                                     <th is='sortable'
                                         :column="'title'">{{ trans('admin.wood-specie.columns.title') }}</th>
                                     <th is='sortable'
@@ -103,7 +102,6 @@
                                         </label>
                                     </td>
 
-                                    <td>@{{ item.id }}</td>
                                     <td>@{{ item.title }}</td>
                                     <td>@{{ item.calculation_period }}</td>
                                     <td>@{{ item.timber_harvesting_age }}</td>

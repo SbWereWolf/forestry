@@ -66361,7 +66361,7 @@ function create(input, value) {
         throw new ParchmentError("Unable to create " + input + " blot");
     }
     var BlotClass = match;
-    var node =
+    var node = 
     // @ts-ignore
     input instanceof Node || input['nodeType'] === Node.TEXT_NODE ? input : BlotClass.create(value);
     return new BlotClass(node, value);
@@ -78267,7 +78267,7 @@ function addStyle (obj, options) {
 	// If a transform function was defined, run it on the css
 	if (options.transform && obj.css) {
 	    result = typeof options.transform === 'function'
-		 ? options.transform(obj.css)
+		 ? options.transform(obj.css) 
 		 : options.transform.default(obj.css);
 
 	    if (result) {
@@ -79781,7 +79781,7 @@ if(false) {}
         headers: {},                    // Additional headers
         xhrFields: {},                  // Additional fields
         urlPropertyName: 'file',        // How to get url from the json response (for instance 'url' for {url: ....})
-        statusPropertyName: 'success',  // How to get status from the json response
+        statusPropertyName: 'success',  // How to get status from the json response 
         success: undefined,             // Success callback: function (data, trumbowyg, $modal, values) {}
         error: undefined,               // Error callback: function () {}
         imageWidthModalEdit: false      // Add ability to edit image width
@@ -87270,7 +87270,7 @@ __webpack_require__.r(__webpack_exports__);
   * (c) 2019 Abdelrahman Awad
   * @license MIT
   */
-//
+// 
 
 var isTextInput = function (el) {
   return includes(['text', 'password', 'search', 'email', 'tel', 'url', 'textarea', 'number'], el.type);
@@ -87935,7 +87935,7 @@ var defineNonReactive = function (obj, prop, value) {
   });
 };
 
-//
+// 
 
 var LOCALE = 'en';
 
@@ -88049,7 +88049,7 @@ Dictionary.prototype.setMessage = function setMessage (locale, key, message) {
       attributes: {}
     };
   }
-
+    
   if (!this.container[locale].messages) {
     this.container[locale].messages = {};
   }
@@ -88105,7 +88105,7 @@ DictionaryResolver.getDriver = function getDriver () {
   return drivers[currentDriver];
 };
 
-//
+// 
 
 var ErrorBag = function ErrorBag (errorBag, id) {
   if ( errorBag === void 0 ) errorBag = null;
@@ -89035,7 +89035,7 @@ RuleContainer.getValidatorMethod = function getValidatorMethod (ruleName) {
 
 Object.defineProperties( RuleContainer, staticAccessors );
 
-//
+// 
 
 var isEvent = function (evt) {
   return (typeof Event !== 'undefined' && isCallable(Event) && evt instanceof Event) || (evt && evt.srcElement);
@@ -89068,7 +89068,7 @@ var addEventListener = function (el, eventName, cb) {
   el.addEventListener(eventName, cb, supportsPassive ? { passive: true } : false);
 };
 
-//
+// 
 
 var DEFAULT_OPTIONS = {
   targetOf: null,
@@ -89790,7 +89790,7 @@ Field.prototype.destroy = function destroy () {
 
 Object.defineProperties( Field.prototype, prototypeAccessors$1 );
 
-//
+// 
 
 var FieldBag = function FieldBag (items) {
   if ( items === void 0 ) items = [];
@@ -90065,7 +90065,7 @@ var setValidator = function (value) {
   return value;
 };
 
-//
+// 
 
 /**
  * Checks if a parent validator instance was requested.
@@ -90156,7 +90156,7 @@ var mixin = {
   }
 };
 
-//
+// 
 
 /**
  * Finds the requested field by id from the context object.
@@ -90218,7 +90218,7 @@ var directive = {
   }
 };
 
-//
+// 
 
 var Validator = function Validator (validations, options, pluginContainer) {
   if ( options === void 0 ) options = { fastExit: true };
@@ -91084,7 +91084,7 @@ Validator.prototype._validate = function _validate (field, value, ref) {
 Object.defineProperties( Validator.prototype, prototypeAccessors$4 );
 Object.defineProperties( Validator, staticAccessors$1 );
 
-//
+// 
 
 var normalizeValue = function (value) {
   if (isObject(value)) {
@@ -91257,7 +91257,7 @@ var modes = {
   lazy: lazy
 };
 
-//
+// 
 
 var Vue;
 var pendingPlugins;
@@ -95923,7 +95923,7 @@ function cleanEscapedString$1(input) {
   return input.match(escapedStringRegExp$1)[1].replace(doubleQuoteRegExp$1, "'")
 }
 
-//
+// 
 
 /**
  * Custom parse behavior on top of date-fns parse function.
@@ -97458,7 +97458,7 @@ var Rules = /*#__PURE__*/Object.freeze({
   url: url
 });
 
-//
+// 
 
 var normalize = function (fields) {
   if (Array.isArray(fields)) {
@@ -98507,8 +98507,8 @@ if (!window.Quill) {
         self.options.theme = self.options.theme || 'snow'
         self.options.boundary = self.options.boundary || document.body
         self.options.modules = self.options.modules || self.defaultModules
-        self.options.modules.toolbar = self.options.modules.toolbar !== undefined
-                                        ? self.options.modules.toolbar
+        self.options.modules.toolbar = self.options.modules.toolbar !== undefined 
+                                        ? self.options.modules.toolbar 
                                         : self.defaultModules.toolbar
         self.options.placeholder = self.options.placeholder || 'Insert text here ...'
         self.options.readOnly = self.options.readOnly !== undefined ? self.options.readOnly : false
@@ -99987,7 +99987,7 @@ var component = Object(_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_I
   null,
   null,
   null
-
+  
 )
 
 /* hot reload */
@@ -100007,7 +100007,7 @@ component.options.__file = "node_modules/vue-quill-editor/src/editor.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib??vue-loader-options!./editor.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-quill-editor/src/editor.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -100023,7 +100023,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader!../../css-loader??ref--7-1!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/src??ref--7-2!../../vue-loader/lib??vue-loader-options!./editor.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./node_modules/vue-quill-editor/src/editor.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a);
+ /* harmony default export */ __webpack_exports__["default"] = (_style_loader_index_js_css_loader_index_js_ref_7_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_src_index_js_ref_7_2_vue_loader_lib_index_js_vue_loader_options_editor_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -112508,6 +112508,65 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/admin/bonitet/Form.js":
+/*!********************************************!*\
+  !*** ./resources/js/admin/bonitet/Form.js ***!
+  \********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
+
+Vue.component('bonitet-form', {
+  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      form: {
+        code: '',
+        remark: '',
+        title: ''
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/bonitet/Listing.js":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/bonitet/Listing.js ***!
+  \***********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
+
+Vue.component('bonitet-listing', {
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/bonitet/index.js":
+/*!*********************************************!*\
+  !*** ./resources/js/admin/bonitet/index.js ***!
+  \*********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/bonitet/Listing.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/bonitet/Form.js");
+
+
+
+/***/ }),
+
 /***/ "./resources/js/admin/bootstrap.js":
 /*!*****************************************!*\
   !*** ./resources/js/admin/bootstrap.js ***!
@@ -112559,6 +112618,67 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/forest-resource/Form.js":
+/*!****************************************************!*\
+  !*** ./resources/js/admin/forest-resource/Form.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
+
+Vue.component('forest-resource-form', {
+  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      form: {
+        bonitet_id: '',
+        forest_fund: '',
+        timber_class_id: '',
+        wood_specie_id: '',
+        wood_stock: ''
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/forest-resource/Listing.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/admin/forest-resource/Listing.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
+
+Vue.component('forest-resource-listing', {
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/forest-resource/index.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/admin/forest-resource/index.js ***!
+  \*****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/forest-resource/Listing.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/forest-resource/Form.js");
+
+
+
+/***/ }),
+
 /***/ "./resources/js/admin/index.js":
 /*!*************************************!*\
   !*** ./resources/js/admin/index.js ***!
@@ -112572,6 +112692,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _profile_edit_profile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile-edit-profile */ "./resources/js/admin/profile-edit-profile/index.js");
 /* harmony import */ var _profile_edit_password__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile-edit-password */ "./resources/js/admin/profile-edit-password/index.js");
 /* harmony import */ var _wood_specie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./wood-specie */ "./resources/js/admin/wood-specie/index.js");
+/* harmony import */ var _bonitet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bonitet */ "./resources/js/admin/bonitet/index.js");
+/* harmony import */ var _timber_class__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./timber-class */ "./resources/js/admin/timber-class/index.js");
+/* harmony import */ var _forest_resource__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./forest-resource */ "./resources/js/admin/forest-resource/index.js");
+
+
+
 
 
 
@@ -112677,6 +112803,65 @@ Vue.component('profile-edit-profile-form', {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/profile-edit-profile/Form.js");
+
+
+/***/ }),
+
+/***/ "./resources/js/admin/timber-class/Form.js":
+/*!*************************************************!*\
+  !*** ./resources/js/admin/timber-class/Form.js ***!
+  \*************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
+
+Vue.component('timber-class-form', {
+  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      form: {
+        code: '',
+        remark: '',
+        title: ''
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/timber-class/Listing.js":
+/*!****************************************************!*\
+  !*** ./resources/js/admin/timber-class/Listing.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
+
+Vue.component('timber-class-listing', {
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/timber-class/index.js":
+/*!**************************************************!*\
+  !*** ./resources/js/admin/timber-class/index.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/timber-class/Listing.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/timber-class/Form.js");
+
 
 
 /***/ }),

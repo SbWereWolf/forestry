@@ -33,6 +33,15 @@ class ForestResource extends Model
     public function woodSpecie()
     {
         return $this->belongsTo(WoodSpecie::class);
+    }
 
+    public function timberClass()
+    {
+        return $this->belongsTo(TimberClass::class);
+    }
+
+    public function bonitet()
+    {
+        return $this->belongsTo(Bonitet::class);
     }
 }

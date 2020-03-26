@@ -8,13 +8,16 @@ use App\Http\Requests\Admin\ForestResource\DestroyForestResource;
 use App\Http\Requests\Admin\ForestResource\IndexForestResource;
 use App\Http\Requests\Admin\ForestResource\StoreForestResource;
 use App\Http\Requests\Admin\ForestResource\UpdateForestResource;
+use App\Models\Bonitet;
 use App\Models\ForestResource;
+use App\Models\TimberClass;
 use App\Models\WoodSpecie;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
@@ -34,18 +37,21 @@ class ForestResourcesController extends Controller
     {
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(ForestResource::class)->processRequestAndGet(
-            // pass the request with params
+        // pass the request with params
             $request,
 
             // set columns to query
             ['bonitet_id', 'forest_fund', 'id', 'timber_class_id', 'wood_specie_id', 'wood_stock'],
 
             // set columns to searchIn
-            ['id'],
+            [],
 
             function ($query) use ($request) {
-                $query->with(['woodSpecie']);
-                if($request->has('woodSpecies')){
+                /* @var Builder $query */
+                $query->with(['woodSpecie','timberClass','bonitet'])
+                    ->orderBy('wood_specie_id')
+                    ->orderBy('timber_class_id');
+                if ($request->has('woodSpecies')) {
                     $query->whereIn('wood_specie_id', $request->get('woodSpecies'));
                 }
             }
@@ -61,21 +67,26 @@ class ForestResourcesController extends Controller
         }
 
         return view('admin.forest-resource.index', ['data' => $data,
-            'woodSpecies' => WoodSpecie::all()]);
+            'woodSpecies' => WoodSpecie::all(),
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @throws AuthorizationException
      * @return Factory|View
+     * @throws AuthorizationException
      */
     public function create()
     {
         $this->authorize('admin.forest-resource.create');
 
         return view('admin.forest-resource.create',
-        ['woodSpecies' => WoodSpecie::all()]);
+            [
+                'woodSpecies' => WoodSpecie::all(),
+                'timberClasses' => TimberClass::all(),
+                'bonitets' => Bonitet::all(),
+            ]);
     }
 
     /**
@@ -89,6 +100,8 @@ class ForestResourcesController extends Controller
         // Sanitize input
         $sanitized = $request->getSanitized();
         $sanitized['wood_specie_id'] = $request->getWoodSpecieId();
+        $sanitized['timber_class_id'] = $request->getTimberClassId();
+        $sanitized['bonitet_id'] = $request->getBonitetId();
 
         // Store the ForestResource
         $forestResource = ForestResource::create($sanitized);
@@ -105,8 +118,8 @@ class ForestResourcesController extends Controller
      * Display the specified resource.
      *
      * @param ForestResource $forestResource
-     * @throws AuthorizationException
      * @return void
+     * @throws AuthorizationException
      */
     public function show(ForestResource $forestResource)
     {
@@ -119,16 +132,22 @@ class ForestResourcesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param ForestResource $forestResource
-     * @throws AuthorizationException
      * @return Factory|View
+     * @throws AuthorizationException
      */
     public function edit(ForestResource $forestResource)
     {
         $this->authorize('admin.forest-resource.edit', $forestResource);
 
+        $bonitet = $forestResource->bonitet()->get()[0];
+        $forestResource->bonitet = $bonitet;
+
         return view('admin.forest-resource.edit', [
             'forestResource' => $forestResource,
             'specieTitle' => $forestResource->woodSpecie()->get()[0]->title,
+            'timberClassTitle' => $forestResource->timberClass()->get()[0]->title,
+            'bonitetId' => (int)$bonitet->id,
+            'bonitets' => Bonitet::all(),
         ]);
     }
 
@@ -143,6 +162,7 @@ class ForestResourcesController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['bonitet_id'] = $request->getBonitetId();
 
         // Update changed values ForestResource
         $forestResource->update($sanitized);
@@ -162,8 +182,8 @@ class ForestResourcesController extends Controller
      *
      * @param DestroyForestResource $request
      * @param ForestResource $forestResource
-     * @throws Exception
      * @return ResponseFactory|RedirectResponse|Response
+     * @throws Exception
      */
     public function destroy(DestroyForestResource $request, ForestResource $forestResource)
     {
@@ -180,10 +200,10 @@ class ForestResourcesController extends Controller
      * Remove the specified resources from storage.
      *
      * @param BulkDestroyForestResource $request
-     * @throws Exception
      * @return Response|bool
+     * @throws Exception
      */
-    public function bulkDestroy(BulkDestroyForestResource $request) : Response
+    public function bulkDestroy(BulkDestroyForestResource $request): Response
     {
         DB::transaction(static function () use ($request) {
             collect($request->data['ids'])

@@ -2,17 +2,15 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('forest-resource-form', {
     mixins: [AppForm],
-    data: function() {
+    data: function () {
         return {
             form: {
-                bonitet_id:  '' ,
-                forest_fund:  '' ,
-                timber_class_id:  '' ,
-                wood_specie_id:  '' ,
-                wood_stock:  '' ,
-                woodSpecie:  '' ,
+                forest_fund: '',
+                wood_stock: '',
+                woodSpecie: '',
+                timberClass: '',
+                bonitet: '',
             }
         }
-    }
-
+    },
 });

@@ -19,29 +19,19 @@
                     <div class="card-body" v-cloak>
                         <div class="card-block">
                             <form @submit.prevent="">
-                                <div class="row" v-if="showWoodSpeciesFilter">
+                                <div class="row justify-content-md-end">
+
                                     <div class="col-sm-auto form-group">
                                         <p>{{ __('Select Wood Specie/s') }}</p>
                                     </div>
-                                    <div class="col col-lg-12 col-xl-12 form-group">
+                                    <div class="col col-lg-7 col-xl-5 form-group">
                                         <multiselect v-model="woodSpeciesMultiselect"
                                                      :options="{{ $woodSpecies->map(function($woodSpecie) { return ['key' => $woodSpecie->id, 'label' =>  $woodSpecie->title]; })->toJson() }}"
                                                      label="label"
                                                      track-by="key"
                                                      placeholder="{{ __('Type to search a Wood Specie/s') }}"
-                                                     :limit="2"
                                                      :multiple="true">
                                         </multiselect>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-md-between">
-                                    <div class="col col-lg-7 col-xl-5 form-group">
-                                        <div class="input-group">
-                                            <input class="form-control" placeholder="{{ trans('brackets/admin-ui::admin.placeholder.search') }}" v-model="search" @keyup.enter="filter('search', $event.target.value)" />
-                                            <span class="input-group-append">
-                                                <button type="button" class="btn btn-primary" @click="filter('search', search)"><i class="fa fa-search"></i>&nbsp; {{ trans('brackets/admin-ui::admin.btn.search') }}</button>
-                                            </span>
-                                        </div>
                                     </div>
                                     <div class="col-sm-auto form-group ">
                                         <select class="form-control" v-model="pagination.state.per_page">
@@ -64,11 +54,11 @@
                                             </label>
                                         </th>
 
-                                        <th is='sortable' :column="'wood_specie_id'">{{ trans('admin.forest-resource.columns.wood_specie_id') }}</th>
-                                        <th is='sortable' :column="'timber_class_id'">{{ trans('admin.forest-resource.columns.timber_class_id') }}</th>
-                                        <th is='sortable' :column="'bonitet_id'">{{ trans('admin.forest-resource.columns.bonitet_id') }}</th>
-                                        <th is='sortable' :column="'forest_fund'">{{ trans('admin.forest-resource.columns.forest_fund') }}</th>
-                                        <th is='sortable' :column="'wood_stock'">{{ trans('admin.forest-resource.columns.wood_stock') }}</th>
+                                        <th>{{ trans('admin.forest-resource.columns.wood_specie_id') }}</th>
+                                        <th>{{ trans('admin.forest-resource.columns.timber_class_id') }}</th>
+                                        <th>{{ trans('admin.forest-resource.columns.bonitet_id') }}</th>
+                                        <th>{{ trans('admin.forest-resource.columns.forest_fund') }}</th>
+                                        <th>{{ trans('admin.forest-resource.columns.wood_stock') }}</th>
 
                                         <th></th>
                                     </tr>
@@ -92,9 +82,9 @@
                                             </label>
                                         </td>
 
-                                        <td>@{{ item.wood_specie_id }}</td>
-                                        <td>@{{ item.timber_class_id }}</td>
-                                        <td>@{{ item.bonitet_id }}</td>
+                                        <td>@{{ item.wood_specie.title }}</td>
+                                        <td>@{{ item.timber_class.code }}</td>
+                                        <td>@{{ item.bonitet.code }}</td>
                                         <td>@{{ item.forest_fund }}</td>
                                         <td>@{{ item.wood_stock }}</td>
 

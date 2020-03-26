@@ -112606,12 +112606,11 @@ Vue.component('forest-resource-form', {
   data: function data() {
     return {
       form: {
-        bonitet_id: '',
         forest_fund: '',
-        timber_class_id: '',
-        wood_specie_id: '',
         wood_stock: '',
-        woodSpecie: ''
+        woodSpecie: '',
+        timberClass: '',
+        bonitet: ''
       }
     };
   }

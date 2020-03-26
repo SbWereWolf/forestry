@@ -6,14 +6,16 @@
 
     <div class="container-xl">
         <div class="card">
-
             <forest-resource-form
                 :action="'{{ $forestResource->resource_url }}'"
                 :data="{{ $forestResource->toJson() }}"
+                :bonitets="{{$bonitets->toJson()}}"
                 v-cloak
-                inline-template>
+                inline-template
+            >
 
-                <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action" novalidate>
+                <form class="form-horizontal form-edit" method="post" @submit.prevent="onSubmit" :action="action"
+                      novalidate>
 
 
                     <div class="card-header">
@@ -34,10 +36,10 @@
 
                 </form>
 
-        </forest-resource-form>
+            </forest-resource-form>
 
         </div>
 
-</div>
+    </div>
 
 @endsection

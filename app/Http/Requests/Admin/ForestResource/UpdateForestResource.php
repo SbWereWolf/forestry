@@ -47,4 +47,11 @@ class UpdateForestResource extends FormRequest
 
         return $sanitized;
     }
+    public function getBonitetId(){
+        $has = $this->has('bonitet');
+        if ($has){
+            return $this->get('bonitet')['id'];
+        }
+        return null;
+    }
 }

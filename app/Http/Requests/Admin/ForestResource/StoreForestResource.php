@@ -25,11 +25,11 @@ class StoreForestResource extends FormRequest
     public function rules(): array
     {
         return [
-            'bonitet_id' => ['required', 'integer'],
             'forest_fund' => ['required', 'integer'],
-            'timber_class_id' => ['required', 'integer'],
             'wood_stock' => ['required', 'integer'],
             'woodSpecie' => ['required'],
+            'timberClass' => ['required'],
+            'bonitet' => ['required'],
 
         ];
     }
@@ -51,6 +51,18 @@ class StoreForestResource extends FormRequest
     public function getWoodSpecieId(){
         if ($this->has('woodSpecie')){
             return $this->get('woodSpecie')['id'];
+        }
+        return null;
+    }
+    public function getTimberClassId(){
+        if ($this->has('timberClass')){
+            return $this->get('timberClass')['id'];
+        }
+        return null;
+    }
+    public function getBonitetId(){
+        if ($this->has('bonitet')){
+            return $this->get('bonitet')['id'];
         }
         return null;
     }

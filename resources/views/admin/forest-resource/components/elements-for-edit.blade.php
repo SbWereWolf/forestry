@@ -1,8 +1,15 @@
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('wood_specie_id'), 'has-success': fields.wood_specie_id && fields.wood_specie_id.valid }">
+<div hidden class="form-group row align-items-center" :class="{'has-danger': errors.has('wood_specie_id'), 'has-success': fields.wood_specie_id && fields.wood_specie_id.valid }">
     <label for="wood_specie_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.forest-resource.columns.wood_specie_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input readonly type="text" v-model="form.wood_specie_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('wood_specie_id'), 'form-control-success': fields.wood_specie_id && fields.wood_specie_id.valid}" id="wood_specie_id" name="wood_specie_id" placeholder="{{ trans('admin.forest-resource.columns.wood_specie_id') }}">
+        <input readonly hidden type="text" v-model="form.wood_specie_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('wood_specie_id'), 'form-control-success': fields.wood_specie_id && fields.wood_specie_id.valid}" id="wood_specie_id" name="wood_specie_id" placeholder="{{ trans('admin.forest-resource.columns.wood_specie_id') }}">
         <div v-if="errors.has('wood_specie_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('wood_specie_id') }}</div>
+    </div>
+</div>
+
+<div class="form-group row align-items-center">
+    <label for="wood_specie_title" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.forest-resource.columns.wood_specie_id') }}</label>
+    <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
+        <input readonly type="text" class="form-control" id="wood_specie_title" value="{{$specieTitle}}">
     </div>
 </div>
 

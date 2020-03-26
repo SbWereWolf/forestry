@@ -1,8 +1,23 @@
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('wood_specie_id'), 'has-success': fields.wood_specie_id && fields.wood_specie_id.valid }">
-    <label for="wood_specie_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.forest-resource.columns.wood_specie_id') }}</label>
+<div class="form-group row align-items-center"
+     :class="{'has-danger': errors.has('wood_specie_id'), 'has-success': this.fields.wood_specie_id && this.fields.wood_specie_id.valid }">
+    <label for="wood_specie_id"
+           class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">
+        {{ trans('admin.forest-resource.columns.wood_specie_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.wood_specie_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('wood_specie_id'), 'form-control-success': fields.wood_specie_id && fields.wood_specie_id.valid}" id="wood_specie_id" name="wood_specie_id" placeholder="{{ trans('admin.forest-resource.columns.wood_specie_id') }}">
-        <div v-if="errors.has('wood_specie_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('wood_specie_id') }}</div>
+
+        <multiselect
+            v-model="form.woodSpecie"
+            :options="$attrs.wood_species"
+            :multiple="false"
+            track-by="id"
+            label="title"
+            tag-placeholder="{{ __('Select Wood Specie') }}"
+            placeholder="{{ __('Wood Specie') }}">
+        </multiselect>
+
+        <div v-if="errors.has('wood_specie_id')" class="form-control-feedback form-text" v-cloak>@{{
+            errors.first('wood_specie_id') }}
+        </div>
     </div>
 </div>
 

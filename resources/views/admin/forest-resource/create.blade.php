@@ -10,6 +10,7 @@
 
         <forest-resource-form
             :action="'{{ url('admin/forest-resources') }}'"
+            :wood_species="{{$woodSpecies->toJson()}}"
             v-cloak
             inline-template>
 

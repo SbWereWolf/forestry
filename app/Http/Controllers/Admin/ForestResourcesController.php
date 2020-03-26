@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\ForestResource\IndexForestResource;
 use App\Http\Requests\Admin\ForestResource\StoreForestResource;
 use App\Http\Requests\Admin\ForestResource\UpdateForestResource;
 use App\Models\ForestResource;
+use App\Models\WoodSpecie;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -40,7 +41,14 @@ class ForestResourcesController extends Controller
             ['bonitet_id', 'forest_fund', 'id', 'timber_class_id', 'wood_specie_id', 'wood_stock'],
 
             // set columns to searchIn
-            ['id']
+            ['id'],
+
+            function ($query) use ($request) {
+                $query->with(['woodSpecie']);
+                if($request->has('woodSpecies')){
+                    $query->whereIn('wood_specie_id', $request->get('woodSpecies'));
+                }
+            }
         );
 
         if ($request->ajax()) {
@@ -52,7 +60,8 @@ class ForestResourcesController extends Controller
             return ['data' => $data];
         }
 
-        return view('admin.forest-resource.index', ['data' => $data]);
+        return view('admin.forest-resource.index', ['data' => $data,
+            'woodSpecies' => WoodSpecie::all()]);
     }
 
     /**
@@ -65,7 +74,8 @@ class ForestResourcesController extends Controller
     {
         $this->authorize('admin.forest-resource.create');
 
-        return view('admin.forest-resource.create');
+        return view('admin.forest-resource.create',
+        ['woodSpecies' => WoodSpecie::all()]);
     }
 
     /**
@@ -78,12 +88,14 @@ class ForestResourcesController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized['wood_specie_id'] = $request->getWoodSpecieId();
 
         // Store the ForestResource
         $forestResource = ForestResource::create($sanitized);
 
         if ($request->ajax()) {
-            return ['redirect' => url('admin/forest-resources'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            return ['redirect' => url('admin/forest-resources'),
+                'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
         return redirect('admin/forest-resources');
@@ -114,9 +126,9 @@ class ForestResourcesController extends Controller
     {
         $this->authorize('admin.forest-resource.edit', $forestResource);
 
-
         return view('admin.forest-resource.edit', [
             'forestResource' => $forestResource,
+            'specieTitle' => $forestResource->woodSpecie()->get()[0]->title,
         ]);
     }
 

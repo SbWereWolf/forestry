@@ -19,6 +19,21 @@
                     <div class="card-body" v-cloak>
                         <div class="card-block">
                             <form @submit.prevent="">
+                                <div class="row" v-if="showWoodSpeciesFilter">
+                                    <div class="col-sm-auto form-group">
+                                        <p>{{ __('Select Wood Specie/s') }}</p>
+                                    </div>
+                                    <div class="col col-lg-12 col-xl-12 form-group">
+                                        <multiselect v-model="woodSpeciesMultiselect"
+                                                     :options="{{ $woodSpecies->map(function($woodSpecie) { return ['key' => $woodSpecie->id, 'label' =>  $woodSpecie->title]; })->toJson() }}"
+                                                     label="label"
+                                                     track-by="key"
+                                                     placeholder="{{ __('Type to search a Wood Specie/s') }}"
+                                                     :limit="2"
+                                                     :multiple="true">
+                                        </multiselect>
+                                    </div>
+                                </div>
                                 <div class="row justify-content-md-between">
                                     <div class="col col-lg-7 col-xl-5 form-group">
                                         <div class="input-group">

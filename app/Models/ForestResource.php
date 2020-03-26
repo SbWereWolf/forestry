@@ -12,21 +12,27 @@ class ForestResource extends Model
         'timber_class_id',
         'wood_specie_id',
         'wood_stock',
-    
+
     ];
-    
-    
+
+
     protected $dates = [
-    
+
     ];
     public $timestamps = false;
-    
+
     protected $appends = ['resource_url'];
 
     /* ************************ ACCESSOR ************************* */
 
     public function getResourceUrlAttribute()
     {
-        return url('/admin/forest-resources/'.$this->getKey());
+        return url('/admin/forest-resources/' . $this->getKey());
+    }
+
+    public function woodSpecie()
+    {
+        return $this->belongsTo(WoodSpecie::class);
+
     }
 }

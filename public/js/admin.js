@@ -112508,32 +112508,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/admin/bonitet/Form.js":
-/*!********************************************!*\
-  !*** ./resources/js/admin/bonitet/Form.js ***!
-  \********************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
-
-Vue.component('bonitet-form', {
-  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
-  data: function data() {
-    return {
-      form: {
-        code: '',
-        remark: '',
-        title: ''
-      }
-    };
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/admin/bonitet/Listing.js":
 /*!***********************************************!*\
   !*** ./resources/js/admin/bonitet/Listing.js ***!
@@ -112561,8 +112535,6 @@ Vue.component('bonitet-listing', {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/bonitet/Listing.js");
-/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/bonitet/Form.js");
-
 
 
 /***/ }),
@@ -112638,7 +112610,8 @@ Vue.component('forest-resource-form', {
         forest_fund: '',
         timber_class_id: '',
         wood_specie_id: '',
-        wood_stock: ''
+        wood_stock: '',
+        woodSpecie: ''
       }
     };
   }
@@ -112658,7 +112631,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
 
 Vue.component('forest-resource-listing', {
-  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      showWoodSpeciesFilter: true,
+      woodSpeciesMultiselect: {},
+      filters: {
+        woodSpecies: []
+      }
+    };
+  },
+  watch: {
+    showWoodSpeciesFilter: function showWoodSpeciesFilter(newVal, oldVal) {
+      this.woodSpeciesMultiselect = [];
+    },
+    woodSpeciesMultiselect: function woodSpeciesMultiselect(newVal, oldVal) {
+      this.filters.woodSpecies = newVal.map(function (object) {
+        return object['key'];
+      });
+      this.filter('woodSpecies', this.filters.woodSpecies);
+    }
+  }
 });
 
 /***/ }),
@@ -112807,32 +112800,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/admin/timber-class/Form.js":
-/*!*************************************************!*\
-  !*** ./resources/js/admin/timber-class/Form.js ***!
-  \*************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
-
-Vue.component('timber-class-form', {
-  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
-  data: function data() {
-    return {
-      form: {
-        code: '',
-        remark: '',
-        title: ''
-      }
-    };
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/admin/timber-class/Listing.js":
 /*!****************************************************!*\
   !*** ./resources/js/admin/timber-class/Listing.js ***!
@@ -112860,8 +112827,6 @@ Vue.component('timber-class-listing', {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/timber-class/Listing.js");
-/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/timber-class/Form.js");
-
 
 
 /***/ }),

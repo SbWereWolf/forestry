@@ -10,7 +10,7 @@ Vue.component('forest-resource-form', {
                 timber_class_id:  '' ,
                 wood_specie_id:  '' ,
                 wood_stock:  '' ,
-                
+                woodSpecie:  '' ,
             }
         }
     }

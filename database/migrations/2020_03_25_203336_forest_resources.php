@@ -24,10 +24,9 @@ class ForestResources extends Migration
             $table->unsignedInteger('wood_stock');
 
             $table->unique(
-                ['wood_specie_id','timber_class_id','bonitet_id'],
-                'wood_specie_timber_class_bonitet');
+                ['wood_specie_id','timber_class_id'],
+                self::RESOURCES.'wood_specie_id_timber_class_id');
             $table->index('timber_class_id');
-            $table->index('bonitet_id');
 
             $table->foreign('wood_specie_id')
                 ->references('id')->on('wood_specie');

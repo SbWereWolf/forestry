@@ -17,7 +17,7 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('bonitet_id'), 'has-success': fields.bonitet_id && fields.bonitet_id.valid }">
     <label for="bonitet_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.forest-resource.columns.bonitet_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input readonly type="text" v-model="form.bonitet_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('bonitet_id'), 'form-control-success': fields.bonitet_id && fields.bonitet_id.valid}" id="bonitet_id" name="bonitet_id" placeholder="{{ trans('admin.forest-resource.columns.bonitet_id') }}">
+        <input type="text" v-model="form.bonitet_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('bonitet_id'), 'form-control-success': fields.bonitet_id && fields.bonitet_id.valid}" id="bonitet_id" name="bonitet_id" placeholder="{{ trans('admin.forest-resource.columns.bonitet_id') }}">
         <div v-if="errors.has('bonitet_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('bonitet_id') }}</div>
     </div>
 </div>

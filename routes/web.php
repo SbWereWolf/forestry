@@ -91,3 +91,30 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
+        Route::prefix('forestry-indicators')->name('forestry-indicators/')->group(static function() {
+            Route::get('/',                                             'ForestryIndicatorController@index')->name('index');
+            Route::get('/{forestryIndicator}/edit',                     'ForestryIndicatorController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'ForestryIndicatorController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{forestryIndicator}',                         'ForestryIndicatorController@update')->name('update');
+            Route::delete('/{forestryIndicator}',                       'ForestryIndicatorController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
+        Route::prefix('cutting-areas')->name('cutting-areas/')->group(static function() {
+            Route::get('/',                                             'CuttingAreaController@index')->name('index');
+            Route::get('/{cuttingArea}/edit',                           'CuttingAreaController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'CuttingAreaController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{cuttingArea}',                               'CuttingAreaController@update')->name('update');
+            Route::delete('/{cuttingArea}',                             'CuttingAreaController@destroy')->name('destroy');
+        });
+    });
+});

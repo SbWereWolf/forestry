@@ -112590,6 +112590,69 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/cutting-area/Form.js":
+/*!*************************************************!*\
+  !*** ./resources/js/admin/cutting-area/Form.js ***!
+  \*************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
+
+Vue.component('cutting-area-form', {
+  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      form: {
+        avrg_increase: '',
+        cutting_turnover: '',
+        first_age: '',
+        ripeness: '',
+        second_age: '',
+        substance: '',
+        wood_specie_id: ''
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/cutting-area/Listing.js":
+/*!****************************************************!*\
+  !*** ./resources/js/admin/cutting-area/Listing.js ***!
+  \****************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
+
+Vue.component('cutting-area-listing', {
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/cutting-area/index.js":
+/*!**************************************************!*\
+  !*** ./resources/js/admin/cutting-area/index.js ***!
+  \**************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/cutting-area/Listing.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/cutting-area/Form.js");
+
+
+
+/***/ }),
+
 /***/ "./resources/js/admin/forest-resource/Form.js":
 /*!****************************************************!*\
   !*** ./resources/js/admin/forest-resource/Form.js ***!
@@ -112671,6 +112734,71 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/admin/forestry-indicator/Form.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/admin/forestry-indicator/Form.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Form/AppForm */ "./resources/js/admin/app-components/Form/AppForm.js");
+
+Vue.component('forestry-indicator-form', {
+  mixins: [_app_components_Form_AppForm__WEBPACK_IMPORTED_MODULE_0__["default"]],
+  data: function data() {
+    return {
+      form: {
+        avrg_bonitet: '',
+        avrg_class: '',
+        avrg_increase: '',
+        avrg_volume: '',
+        economical_section_high: '',
+        economical_section_low: '',
+        operational_fund: '',
+        operational_volume: '',
+        wood_specie_id: ''
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/forestry-indicator/Listing.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/forestry-indicator/Listing.js ***!
+  \**********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app-components/Listing/AppListing */ "./resources/js/admin/app-components/Listing/AppListing.js");
+
+Vue.component('forestry-indicator-listing', {
+  mixins: [_app_components_Listing_AppListing__WEBPACK_IMPORTED_MODULE_0__["default"]]
+});
+
+/***/ }),
+
+/***/ "./resources/js/admin/forestry-indicator/index.js":
+/*!********************************************************!*\
+  !*** ./resources/js/admin/forestry-indicator/index.js ***!
+  \********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Listing */ "./resources/js/admin/forestry-indicator/Listing.js");
+/* harmony import */ var _Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Form */ "./resources/js/admin/forestry-indicator/Form.js");
+
+
+
+/***/ }),
+
 /***/ "./resources/js/admin/index.js":
 /*!*************************************!*\
   !*** ./resources/js/admin/index.js ***!
@@ -112687,6 +112815,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bonitet__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bonitet */ "./resources/js/admin/bonitet/index.js");
 /* harmony import */ var _timber_class__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./timber-class */ "./resources/js/admin/timber-class/index.js");
 /* harmony import */ var _forest_resource__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./forest-resource */ "./resources/js/admin/forest-resource/index.js");
+/* harmony import */ var _forestry_indicator__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./forestry-indicator */ "./resources/js/admin/forestry-indicator/index.js");
+/* harmony import */ var _cutting_area__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cutting-area */ "./resources/js/admin/cutting-area/index.js");
+
+
 
 
 

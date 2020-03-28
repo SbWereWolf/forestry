@@ -5,3 +5,5 @@ import './wood-specie';
 import './bonitet';
 import './timber-class';
 import './forest-resource';
+import './forestry-indicator';
+import './cutting-area';

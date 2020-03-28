@@ -20,31 +20,6 @@
                     </div>
                     <div class="card-body" v-cloak>
                         <div class="card-block">
-                            <form @submit.prevent="">
-                                <div class="row justify-content-md-between">
-                                    <div class="col col-lg-7 col-xl-5 form-group">
-                                        <div class="input-group">
-                                            <input class="form-control"
-                                                   placeholder="{{ trans('brackets/admin-ui::admin.placeholder.search') }}"
-                                                   v-model="search"
-                                                   @keyup.enter="filter('search', $event.target.value)"/>
-                                            <span class="input-group-append">
-                                                <button type="button" class="btn btn-primary"
-                                                        @click="filter('search', search)"><i class="fa fa-search"></i>&nbsp; {{ trans('brackets/admin-ui::admin.btn.search') }}</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-auto form-group ">
-                                        <select class="form-control" v-model="pagination.state.per_page">
-
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </form>
-
                             <table class="table table-hover table-listing">
                                 <thead>
                                 <tr>

@@ -25,10 +25,7 @@ class UpdateForestResource extends FormRequest
     public function rules(): array
     {
         return [
-            'bonitet_id' => ['sometimes', 'integer'],
             'forest_fund' => ['sometimes', 'integer'],
-            'timber_class_id' => ['sometimes', 'integer'],
-            'wood_specie_id' => ['sometimes', 'integer'],
             'wood_stock' => ['sometimes', 'integer'],
         ];
     }

@@ -146,8 +146,7 @@ class ForestResourcesController extends Controller
             'forestResource' => $forestResource,
             'specieTitle' => $forestResource->woodSpecie()->get()[0]->title,
             'timberClassTitle' => $forestResource->timberClass()->get()[0]->title,
-            'bonitetId' => (int)$bonitet->id,
-            'bonitets' => Bonitet::all(),
+            'bonitetTitle' => $forestResource->bonitet()->get()[0]->title,
         ]);
     }
 
@@ -162,7 +161,6 @@ class ForestResourcesController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
-        $sanitized['bonitet_id'] = $request->getBonitetId();
 
         // Update changed values ForestResource
         $forestResource->update($sanitized);

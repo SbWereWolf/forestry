@@ -2,12 +2,12 @@
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.content') }}</li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('admin/wood-species') }}"><i class="nav-icon icon-plane"></i> {{ trans('admin.wood-specie.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/bonitets') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.bonitet.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/timber-classes') }}"><i class="nav-icon icon-globe"></i> {{ trans('admin.timber-class.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/forest-resources') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.forest-resource.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/forestry-indicators') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.forestry-indicator.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/cutting-areas') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.cutting-area.title') }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('admin/wood-species') }}"><i class="nav-icon icon-doc"></i> {{ trans('admin.wood-specie.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/bonitets') }}"><i class="nav-icon icon-folder"></i> {{ trans('admin.bonitet.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/timber-classes') }}"><i class="nav-icon icon-tag"></i> {{ trans('admin.timber-class.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/forest-resources') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.forest-resource.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/forestry-indicators') }}"><i class="nav-icon icon-speedometer"></i> {{ trans('admin.forestry-indicator.title') }}</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/cutting-areas') }}"><i class="nav-icon icon-calculator"></i> {{ trans('admin.cutting-area.title') }}</a></li>
            {{-- Do not delete me :) I'm used for auto-generation menu items --}}
 
             <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.settings') }}</li>

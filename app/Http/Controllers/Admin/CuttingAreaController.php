@@ -3,20 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CuttingArea\BulkDestroyCuttingArea;
-use App\Http\Requests\Admin\CuttingArea\DestroyCuttingArea;
 use App\Http\Requests\Admin\CuttingArea\IndexCuttingArea;
-use App\Http\Requests\Admin\CuttingArea\StoreCuttingArea;
-use App\Http\Requests\Admin\CuttingArea\UpdateCuttingArea;
 use App\Models\CuttingArea;
 use Brackets\AdminListing\Facades\AdminListing;
-use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -91,14 +83,20 @@ from wood_specie ws
 ');
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(CuttingArea::class)->processRequestAndGet(
-            // pass the request with params
+        // pass the request with params
             $request,
 
             // set columns to query
             ['avrg_increase', 'cutting_turnover', 'first_age', 'id', 'ripeness', 'second_age', 'substance', 'wood_specie_id'],
 
             // set columns to searchIn
-            ['id']
+            [],
+
+            function ($query) use ($request) {
+                /* @var Builder $query */
+                $query->with(['woodSpecie'])
+                    ->orderBy('wood_specie_id');
+            }
         );
 
         if ($request->ajax()) {
@@ -117,8 +115,8 @@ from wood_specie ws
      * Display the specified resource.
      *
      * @param CuttingArea $cuttingArea
-     * @throws AuthorizationException
      * @return void
+     * @throws AuthorizationException
      */
     public function show(CuttingArea $cuttingArea)
     {

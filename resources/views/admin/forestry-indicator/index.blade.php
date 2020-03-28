@@ -57,7 +57,7 @@
                                 <tbody>
                                 <tr v-for="(item, index) in collection" :key="item.id">
 
-                                    <td>@{{ item.wood_specie_id }}</td>
+                                    <td>@{{ item.wood_specie.title }}</td>
                                     <td>@{{ item.avrg_bonitet }}</td>
                                     <td>@{{ item.avrg_class }}</td>
                                     <td>@{{ item.avrg_wood_stock }}</td>

@@ -20,23 +20,11 @@
 
 <div class="form-group row align-items-center"
      :class="{'has-danger': errors.has('bonitet_id'), 'has-success': this.fields.bonitet_id && this.fields.bonitet_id.valid }">
-    <label for="bonitet_id"
+    <label for="bonitet_title"
            class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">
         {{ trans('admin.forest-resource.columns.bonitet_id') }}</label>
     <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-
-        <multiselect
-            v-model="form.bonitet"
-            :options="$attrs.bonitets"
-            :multiple="false"
-            :searchable="false"
-            :allow-empty="false"
-            track-by="id"
-            label="title"
-            tag-placeholder="{{ __('Select Bonitet') }}"
-            placeholder="{{ __('Bonitet') }}">
-        </multiselect>
-
+        <input readonly type="text" class="form-control" id="bonitet_title" value="{{$bonitetTitle}}">
         <div v-if="errors.has('bonitet_id')" class="form-control-feedback form-text" v-cloak>@{{
             errors.first('bonitet_id') }}
         </div>

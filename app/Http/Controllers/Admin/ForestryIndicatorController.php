@@ -3,20 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ForestryIndicator\BulkDestroyForestryIndicator;
-use App\Http\Requests\Admin\ForestryIndicator\DestroyForestryIndicator;
 use App\Http\Requests\Admin\ForestryIndicator\IndexForestryIndicator;
-use App\Http\Requests\Admin\ForestryIndicator\StoreForestryIndicator;
-use App\Http\Requests\Admin\ForestryIndicator\UpdateForestryIndicator;
 use App\Models\ForestryIndicator;
 use Brackets\AdminListing\Facades\AdminListing;
-use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -108,7 +100,13 @@ from wood_specie ws
             ['avrg_bonitet', 'avrg_class', 'avrg_increase', 'avrg_wood_stock', 'economical_section_high', 'economical_section_low', 'id', 'operational_fund', 'operational_wood_stock', 'wood_specie_id'],
 
             // set columns to searchIn
-            ['id']
+            [],
+
+            function ($query) use ($request) {
+                /* @var Builder $query */
+                $query->with(['woodSpecie'])
+                    ->orderBy('wood_specie_id');
+            }
         );
 
         if ($request->ajax()) {

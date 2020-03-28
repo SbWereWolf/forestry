@@ -9,7 +9,6 @@
             <forest-resource-form
                 :action="'{{ $forestResource->resource_url }}'"
                 :data="{{ $forestResource->toJson() }}"
-                :bonitets="{{$bonitets->toJson()}}"
                 v-cloak
                 inline-template
             >

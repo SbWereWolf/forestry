@@ -38,52 +38,54 @@ select ws.id,
        (-- Лесосека по спелости
            select sum(f.forest_fund) / ws.calculation_period
            from forest_resources f
+                    join timber_class tc on tc.id = f.timber_class_id
            where f.wood_specie_id = ws.id
-             and (select code from timber_class ts where ts.id = f.timber_class_id)
-                     * ws.calculation_period > ws.timber_harvesting_age
+             and tc.code * ws.calculation_period >= ws.timber_harvesting_age
        ) as ripeness,
        (-- Первая возрастная
            select sum(f.forest_fund) / (ws.calculation_period * 2)
            from forest_resources f
+                    join timber_class tc on tc.id = f.timber_class_id
            where f.wood_specie_id = ws.id
-             and (select code + 1 from timber_class ts where ts.id = f.timber_class_id)
-                     * ws.calculation_period > ws.timber_harvesting_age
+             and (tc.code + 1) * ws.calculation_period >= ws.timber_harvesting_age
        ) as first_age,
        (-- Вторая возрастная
            select sum(f.forest_fund) / (ws.calculation_period * 3)
            from forest_resources f
+                    join timber_class tc on tc.id = f.timber_class_id
            where f.wood_specie_id = ws.id
-             and (select code + 2 from timber_class ts where ts.id = f.timber_class_id)
-                     * ws.calculation_period > ws.timber_harvesting_age
+             and (tc.code + 2) * ws.calculation_period >= ws.timber_harvesting_age
        ) as second_age,
        (-- По среднему приросту
-           select
-                   ((sum(f.wood_stock)/sum(f.forest_fund ))
-           /(sum(f.forest_fund*(select code from timber_class tc where tc.id = f.timber_class_id))
-                       /sum(f.forest_fund )*ws.calculation_period))
-           /(           select
-               sum(f.forest_fund )
-           from
-               forest_resources f
-           where f.wood_specie_id = ws.id
-             and (select code from timber_class ts where ts.id = f.timber_class_id)
-                     * ws.calculation_period >= ws.timber_harvesting_age
-                     and exists(select null from bonitet b where b.id = f.bonitet_id and code between 1 and 3))
-           from
-               forest_resources f
+           select ((sum(f.wood_stock) / sum(f.forest_fund)) -- Средний запас
+               / (sum(f.forest_fund * tc.code)
+                      / sum(f.forest_fund) * ws.calculation_period)-- Средний возраст класс древесины
+                      )-- Средний прирост
+                      / (select sum(fi.forest_fund)
+                         from forest_resources fi
+                                  join bonitet bi on bi.id = fi.bonitet_id
+                                  join timber_class ti on ti.id = fi.timber_class_id
+                         where fi.wood_specie_id = ws.id
+                           and bi.code between 1 and 3
+                           and ti.code * ws.calculation_period >= ws.timber_harvesting_age
+                  )-- Эксплуатационный фонд
+           from forest_resources f
+                    join timber_class tc on tc.id = f.timber_class_id
            where f.wood_specie_id = ws.id
        ) as avrg_increase,
        (-- По состоянию
            select sum(f.forest_fund) / ws.calculation_period
            from forest_resources f
+                    join timber_class tc on tc.id = f.timber_class_id
            where f.wood_specie_id = ws.id
-             and f.timber_class_id = (select max(code) from timber_class)
+             and tc.code = (select max(code) from timber_class)
        ) as substance,
        (-- По обороту рубки
            select sum(f.forest_fund) / ws.main_harvesting_age
            from forest_resources f
+                    join bonitet b on b.id = f.bonitet_id
            where f.wood_specie_id = ws.id
-             and exists(select null from bonitet b where b.id = f.bonitet_id and b.code between 1 and 3)
+             and b.code between 1 and 3
        ) as cutting_turnover
 from wood_specie ws
 ');
@@ -112,40 +114,6 @@ from wood_specie ws
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @throws AuthorizationException
-     * @return Factory|View
-     */
-    public function create()
-    {
-        $this->authorize('admin.cutting-area.create');
-
-        return view('admin.cutting-area.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StoreCuttingArea $request
-     * @return array|RedirectResponse|Redirector
-     */
-    public function store(StoreCuttingArea $request)
-    {
-        // Sanitize input
-        $sanitized = $request->getSanitized();
-
-        // Store the CuttingArea
-        $cuttingArea = CuttingArea::create($sanitized);
-
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/cutting-areas'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/cutting-areas');
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param CuttingArea $cuttingArea
@@ -157,88 +125,5 @@ from wood_specie ws
         $this->authorize('admin.cutting-area.show', $cuttingArea);
 
         // TODO your code goes here
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param CuttingArea $cuttingArea
-     * @throws AuthorizationException
-     * @return Factory|View
-     */
-    public function edit(CuttingArea $cuttingArea)
-    {
-        $this->authorize('admin.cutting-area.edit', $cuttingArea);
-
-
-        return view('admin.cutting-area.edit', [
-            'cuttingArea' => $cuttingArea,
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateCuttingArea $request
-     * @param CuttingArea $cuttingArea
-     * @return array|RedirectResponse|Redirector
-     */
-    public function update(UpdateCuttingArea $request, CuttingArea $cuttingArea)
-    {
-        // Sanitize input
-        $sanitized = $request->getSanitized();
-
-        // Update changed values CuttingArea
-        $cuttingArea->update($sanitized);
-
-        if ($request->ajax()) {
-            return [
-                'redirect' => url('admin/cutting-areas'),
-                'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
-            ];
-        }
-
-        return redirect('admin/cutting-areas');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param DestroyCuttingArea $request
-     * @param CuttingArea $cuttingArea
-     * @throws Exception
-     * @return ResponseFactory|RedirectResponse|Response
-     */
-    public function destroy(DestroyCuttingArea $request, CuttingArea $cuttingArea)
-    {
-        $cuttingArea->delete();
-
-        if ($request->ajax()) {
-            return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
-        }
-
-        return redirect()->back();
-    }
-
-    /**
-     * Remove the specified resources from storage.
-     *
-     * @param BulkDestroyCuttingArea $request
-     * @throws Exception
-     * @return Response|bool
-     */
-    public function bulkDestroy(BulkDestroyCuttingArea $request) : Response
-    {
-        DB::transaction(static function () use ($request) {
-            collect($request->data['ids'])
-                ->chunk(1000)
-                ->each(static function ($bulkChunk) {
-                    CuttingArea::whereIn('id', $bulkChunk)->delete();
-
-                    // TODO your code goes here
-                });
-        });
-
-        return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
     }
 }

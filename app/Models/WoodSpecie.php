@@ -30,9 +30,4 @@ class WoodSpecie extends Model
     {
         return url('/admin/wood-species/'.$this->getKey());
     }
-
-    public function forestResources()
-    {
-        return $this->hasMany(ForestResource::class);
-    }
 }

@@ -98,10 +98,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
         Route::prefix('forestry-indicators')->name('forestry-indicators/')->group(static function() {
             Route::get('/',                                             'ForestryIndicatorController@index')->name('index');
-            Route::get('/{forestryIndicator}/edit',                     'ForestryIndicatorController@edit')->name('edit');
-            Route::post('/bulk-destroy',                                'ForestryIndicatorController@bulkDestroy')->name('bulk-destroy');
-            Route::post('/{forestryIndicator}',                         'ForestryIndicatorController@update')->name('update');
-            Route::delete('/{forestryIndicator}',                       'ForestryIndicatorController@destroy')->name('destroy');
         });
     });
 });
@@ -111,10 +107,21 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
     Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
         Route::prefix('cutting-areas')->name('cutting-areas/')->group(static function() {
             Route::get('/',                                             'CuttingAreaController@index')->name('index');
-            Route::get('/{cuttingArea}/edit',                           'CuttingAreaController@edit')->name('edit');
-            Route::post('/bulk-destroy',                                'CuttingAreaController@bulkDestroy')->name('bulk-destroy');
-            Route::post('/{cuttingArea}',                               'CuttingAreaController@update')->name('update');
-            Route::delete('/{cuttingArea}',                             'CuttingAreaController@destroy')->name('destroy');
         });
+    });
+});
+
+Route::middleware(['auth:' . config('admin-auth.defaults.guard')])->group(static function () {
+    Route::namespace('Admin')->group(static function () {
+        Route::view('/admin', 'admin.homepage.index')->name('brackets/admin-auth::admin');
+    });
+});
+
+Route::middleware(['auth:' . config('admin-auth.defaults.guard')])->group(static function () {
+    Route::prefix('info')->name('info/')->group(static function() {
+        Route::view('/structure', 'info.structure')->name('structure');
+        Route::view('/services', 'info.services')->name('services');
+        Route::view('/products', 'info.products')->name('products');
+        Route::view('/contacts', 'info.contacts')->name('contacts');
     });
 });

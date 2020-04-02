@@ -1,7 +1,7 @@
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
-            <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.content') }}</li>
+            <li class="nav-title">Лесоустройство</li>
             <li class="nav-item"><a class="nav-link" href="{{ url('admin/wood-species') }}"><i class="nav-icon icon-doc"></i> {{ trans('admin.wood-specie.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/bonitets') }}"><i class="nav-icon icon-folder"></i> {{ trans('admin.bonitet.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/timber-classes') }}"><i class="nav-icon icon-tag"></i> {{ trans('admin.timber-class.title') }}</a></li>

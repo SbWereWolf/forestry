@@ -49,21 +49,16 @@ select ws.id,
              and (tc.code + 2) * ws.calculation_period >= ws.timber_harvesting_age
        ) as second_age,
        (-- По среднему приросту
-           select ((sum(f.wood_stock) / sum(f.forest_fund)) -- Средний запас
-               / (sum(f.forest_fund * tc.code)
-                      / sum(f.forest_fund) * ws.calculation_period)-- Средний возраст класс древесины
-                      )-- Средний прирост
-                      / (select sum(fi.forest_fund)
-                         from forest_resources fi
-                                  join bonitet bi on bi.id = fi.bonitet_id
-                                  join timber_class ti on ti.id = fi.timber_class_id
-                         where fi.wood_specie_id = ws.id
-                           and bi.code between 1 and 3
-                           and ti.code * ws.calculation_period >= ws.timber_harvesting_age
-                  )-- Эксплуатационный фонд
+           select (sum(f.wood_stock) / sum(f.forest_fund))
+                      / (select ws.calculation_period * sum(f.forest_fund * tc.code)
+                                    / sum(f.forest_fund)
+                         from forest_resources f
+                                  join timber_class tc on tc.id = f.timber_class_id
+                         where f.wood_specie_id = ws.id)
            from forest_resources f
-                    join timber_class tc on tc.id = f.timber_class_id
+                    join bonitet b on b.id = f.bonitet_id
            where f.wood_specie_id = ws.id
+             and b.code between 1 and 3
        ) as avrg_increase,
        (-- По состоянию
            select sum(f.forest_fund) / ws.calculation_period

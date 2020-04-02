@@ -1,6 +1,6 @@
 @extends('admin.layout.default')
 
-<link rel="stylesheet" type="text/css"href="/css/forestry.css">
+<link rel="stylesheet" type="text/css" href="/css/forestry.css">
 
 @section('body')
 

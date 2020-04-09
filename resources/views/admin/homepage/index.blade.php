@@ -4,6 +4,13 @@
 
 @section('body')
 
+    <div class="justify-content-around">
+<div>
+    <picture>
+        <img src="/images/forestry/forest.jpg" alt="Forest" width="640" height="305">
+    </picture>
+</div>
+    </div>
     <div class="archive">
         <div>
             <a href="#"

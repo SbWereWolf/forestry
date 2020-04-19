@@ -11,8 +11,8 @@
 ## Install
 ```
 composer install
-php artian key:generate
-php artian migrate
+php artisan key:generate
+php artisan migrate
 npm install
 npm run dev
 ```

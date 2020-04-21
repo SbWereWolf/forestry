@@ -50,7 +50,8 @@ class ForestResourcesController extends Controller
                 /* @var Builder $query */
                 $query->with(['woodSpecie','timberClass','bonitet'])
                     ->orderBy('wood_specie_id')
-                    ->orderBy('timber_class_id');
+                    ->orderBy('timber_class_id')
+                    ->orderBy('bonitet_id');
                 if ($request->has('woodSpecies')) {
                     $query->whereIn('wood_specie_id', $request->get('woodSpecies'));
                 }

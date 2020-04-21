@@ -107,7 +107,7 @@ select ws.id,
                                                              on b.id = f.bonitet_id
                                                where f.wood_specie_id = ws.id
                                                  and b.code between 1 and 3
-                                               group by 
+                                               group by
                                                         ws.id,
                                                         ws.calculation_period,
                                                         ws.timber_harvesting_age

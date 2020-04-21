@@ -62,24 +62,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 /* Auto-generated admin routes */
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
     Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
-        Route::prefix('bonitets')->name('bonitets/')->group(static function() {
-            Route::get('/', 'BonitetController@index')->name('index');
-        });
-    });
-});
-
-/* Auto-generated admin routes */
-Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
-    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
-        Route::prefix('timber-classes')->name('timber-classes/')->group(static function() {
-            Route::get('/', 'TimberClassController@index')->name('index');
-        });
-    });
-});
-
-/* Auto-generated admin routes */
-Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
-    Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
         Route::prefix('forest-resources')->name('forest-resources/')->group(static function() {
             Route::get('/',                                             'ForestResourcesController@index')->name('index');
             Route::get('/create',                                       'ForestResourcesController@create')->name('create');

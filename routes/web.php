@@ -79,7 +79,8 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
     Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
         Route::prefix('forestry-indicators')->name('forestry-indicators/')->group(static function() {
-            Route::get('/',                                             'ForestryIndicatorController@index')->name('index');
+            Route::get('/', 'ForestryIndicatorController@index')->name('index');
+            Route::get('/calculate', 'ForestryIndicatorController@calculate')->name('calculate');
         });
     });
 });
@@ -88,7 +89,8 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
     Route::prefix('admin')->namespace('Admin')->name('admin/')->group(static function() {
         Route::prefix('cutting-areas')->name('cutting-areas/')->group(static function() {
-            Route::get('/',                                             'CuttingAreaController@index')->name('index');
+            Route::get('/', 'CuttingAreaController@index')->name('index');
+            Route::get('/calculate', 'CuttingAreaController@calculate')->name('calculate');
         });
     });
 });
